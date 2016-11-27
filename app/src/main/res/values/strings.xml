@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RevU</string>
+    <string name="db_name">RevUDB</string>
 </resources>
