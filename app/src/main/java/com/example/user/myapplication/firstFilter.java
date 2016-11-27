@@ -3,7 +3,7 @@ package com.example.user.myapplication;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class FirstFilter extends AppCompatActivity {
+public class firstFilter extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
