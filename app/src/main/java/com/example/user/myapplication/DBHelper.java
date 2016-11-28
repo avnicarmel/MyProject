@@ -141,7 +141,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sql_create_table="create table "+RANK_TABLE+" ("+PROF_ID +" INTEGER ,"+COURSE_ID+" INTEGER, "
                 +SEMESTER+" TEXT, "+ATTITUDE+" DECIMAL,"+PREPARE
-                +" DECIMAL,"+INTEREST+" DECIMAL,"+TEACH_LVL+" DECIMAL,"+GENERAL_RANK+" DECIMAL, "
+                +" DECIMAL,"+INTEREST+" DECIMAL,"+TEACH_LVL+" DECIMAL, "
                 +"PRIMARY KEY ("+PROF_ID+","+COURSE_ID+"), "
                 +"FOREIGN KEY ("+PROF_ID+") REFERENCES "+PROFESSOR_TABLE+" ("+PROF_ID+") ON DELETE CASCADE ON UPDATE NO ACTION, "
                 +"FOREIGN KEY ("+COURSE_ID+") REFERENCES "+COURSE_TABLE+" ("+COURSE_ID+") ON DELETE CASCADE ON UPDATE NO ACTION);";
@@ -194,7 +194,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values4.put(PREPARE,5);
         values4.put(INTEREST,5);
         values4.put(TEACH_LVL,5);
-        values4.put(GENERAL_RANK,5);
+       // values4.put(GENERAL_RANK,5);
 
         //for professor
         values11.put(FIRST_NAME, "Carmel");
@@ -214,7 +214,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values44.put(PREPARE,10);
         values44.put(INTEREST,10);
         values44.put(TEACH_LVL,10);
-        values44.put(GENERAL_RANK,10);
+        //values44.put(GENERAL_RANK,10);
 
         //for professor
         values111.put(FIRST_NAME, "Eli");
@@ -234,24 +234,24 @@ public class DBHelper extends SQLiteOpenHelper {
         values444.put(PREPARE,7);
         values444.put(INTEREST,7);
         values444.put(TEACH_LVL,5);
-        values444.put(GENERAL_RANK,6);
+       // values444.put(GENERAL_RANK,6);
 
 
         try {
             db.insertOrThrow(PROFESSOR_TABLE, null, values1);
             db.insertOrThrow(COURSE_TABLE, null, values2);
             db.insertOrThrow(MEMBER_TABLE, null, values3);
-            db.insertOrThrow(RANK_TABLE, null, values4);
+           db.insertOrThrow(RANK_TABLE, null, values4);
 
             db.insertOrThrow(PROFESSOR_TABLE, null, values11);
             db.insertOrThrow(COURSE_TABLE, null, values22);
             db.insertOrThrow(MEMBER_TABLE, null, values33);
-            db.insertOrThrow(RANK_TABLE, null, values44);
+           // db.insertOrThrow(RANK_TABLE, null, values44);
 
             db.insertOrThrow(PROFESSOR_TABLE, null, values111);
             db.insertOrThrow(COURSE_TABLE, null, values222);
             db.insertOrThrow(MEMBER_TABLE, null, values333);
-            db.insertOrThrow(RANK_TABLE, null, values444);
+         //   db.insertOrThrow(RANK_TABLE, null, values444);
         } catch (SQLiteConstraintException e) {
 
         }
@@ -270,14 +270,17 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<String> res=new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
         try {
-            Cursor result = db.rawQuery("SELECT " + INSTITUTE + " FROM " + MEMBER_TABLE + " WHERE " + USER_NAME + "=" + username
-                    + " AND " + PASSWORD + "=" + password, null);
+            Cursor result = db.rawQuery("SELECT * FROM member WHERE firstName LIKE '"+username+"' AND password LIKE '"+password
+                    +"' ",null);
+
+
+
             if (result == null || result.getCount() <= 0) // didn't found user
             {
                 result.close();
                 return null;
             } else if (result.moveToFirst()) {
-                String institute = result.getString(0);
+                String institute = result.getString(3);
                 res.add(institute);
             }
             result.close();
@@ -385,7 +388,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return res;
 
     }
-/*
+
     public ArrayList<String> getProfRanks(String firstName, String lastName){
         ArrayList<String> res=new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -398,14 +401,13 @@ public class DBHelper extends SQLiteOpenHelper {
                 return null;
             }
             else  if (result.moveToFirst()) {
-                do {
-                    String firstName = result.g
-                    String lastName = result.getString(2);
-                    String name = firstName+" "+lastName;
-                    res.add(name);
-                } while(result.moveToNext());
+                    String id = result.getString(0);
+                if(id!=null){
+                    result = db.rawQuery("SELECT * FROM "+RANK_TABLE+" WHERE "+PROF_ID+" = "+id,null);
 
+                }
             }
+
             result.close();
         }
         catch(SQLiteConstraintException e)
@@ -418,6 +420,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         return null;
-    }*/
+    }
 
 }
