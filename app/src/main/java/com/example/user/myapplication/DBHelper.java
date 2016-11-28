@@ -269,7 +269,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<String> login(String username, String password) {
         ArrayList<String> res=new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("SELECT "+INSTITUTE+" FROM " + MEMBER_TABLE+" WHERE "+USER_NAME+"="+username+" AND "+PASSWORD+"="+password, null);
+        Cursor result = db.rawQuery("SELECT "+INSTITUTE+" FROM " + MEMBER_TABLE+" WHERE "+USER_NAME+"="+username
+                +" AND "+PASSWORD+"="+password, null);
         if(result== null || result.getCount() <= 0) // didn't found user
         {
             result.close();
@@ -314,26 +315,30 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<String> getProfByInstitude(String institude) {
         ArrayList<String> res=new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
+        Cursor result;
         try {
-            Cursor result = db.rawQuery("SELECT * FROM " + PROFESSOR_TABLE + " WHERE " + INSTITUTE + "=" + institude, null);
+            result = db.rawQuery("SELECT * FROM " + PROFESSOR_TABLE + " WHERE " + INSTITUTE + "=" + institude, null);
+            if(result== null || result.getCount() <= 0) // didn't found user
+            {
+                result.close();
+                return null;
+            }
+            else  if (result.moveToFirst()) {
+                do {
+                    String name = result.getString(1);
+                    res.add(name);
+                } while(result.moveToNext());
+
+            }
+            result.close();
         }
         catch(SQLiteConstraintException e)
         {
             return null;
         }
-        if(result== null || result.getCount() <= 0) // didn't found user
-        {
+        finally {
             result.close();
-            return null;
         }
-        else  if (result.moveToFirst()) {
-            do {
-                String name = result.getString(1);
-                res.add(name);
-            } while(result.moveToNext());
-
-        }
-        result.close();
         return res;
 
     }
