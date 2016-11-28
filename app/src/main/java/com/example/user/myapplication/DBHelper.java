@@ -325,7 +325,9 @@ public class DBHelper extends SQLiteOpenHelper {
             }
             else  if (result.moveToFirst()) {
                 do {
-                    String name = result.getString(1);
+                    String firstName = result.getString(1);
+                    String lastName = result.getString(2);
+                    String name = firstName+" "+lastName;
                     res.add(name);
                 } while(result.moveToNext());
 
