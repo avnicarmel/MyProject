@@ -1,10 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.example.user.myapplication.Register">
+    tools:context="com.example.user.myapplication.Register"
+    tools:ignore="ExtraText">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Register"
+    android:id="@+id/RegisterText"
+    android:layout_margin="15dp" android:layout_gravity="center"
+    android:textStyle="bold"
+    android:textSize="30dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:textColorHint="#a5b19c"
+        android:textColor="#a5b19c"
+        android:ems="15"
+        android:id="@+id/username"
+        android:layout_gravity="left"
+
+        android:focusable = "true"
+        android:layout_below="@+id/RegisterText"
+        android:layout_alignParentLeft = "true"
+        android:layout_alignParentRight = "true"
+        android:layout_alignParentEnd = "true"
+        android:maxLines="1"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="#a5b19c"
+        android:textColor="#a5b19c"
+        android:ems="15"
+        android:layout_gravity="left"
+        android:inputType="textPassword"
+        android:id="@+id/passwordText"
+        android:focusable = "true"
+        android:layout_alignParentLeft = "true"
+        android:layout_alignParentRight = "true"
+        android:layout_alignParentEnd = "true"
+        android:layout_below="@+id/username"
+        android:maxLines="1"
+        android:layout_marginTop="4dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textColorHint="#a5b19c"
+        android:textColor="#a5b19c"
+        android:ems="15"
+        android:layout_gravity="left"
+        android:id="@+id/emailText"
+        android:focusable = "true"
+        android:layout_alignParentLeft = "true"
+        android:layout_alignParentRight = "true"
+        android:layout_alignParentEnd = "true"
+        android:layout_below="@+id/passwordText"
+        android:maxLines="1"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/academicInstitutionRadio"
+        android:layout_margin="5dp"
+        android:layout_gravity="left">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Academic Institution:"
+            android:textStyle="bold"
+            android:textColor="#ff471a"
+            android:textSize="15dp"
+            android:layout_gravity="left"
+            />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RGroup"
+            android:gravity="left">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Braude"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haifa University"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Open University"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Technion"/>
+</RadioGroup>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/submitButton"
+        android:layout_gravity="center"
+        android:layout_below="@+id/academicInstitutionRadio"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/cancelButton"
+        android:layout_gravity="center"
+        android:layout_below="@+id/academicInstitutionRadio"
+        />
+
+</LinearLayout>

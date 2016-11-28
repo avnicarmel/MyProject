@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -15,12 +16,20 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     Button m_register, m_login;
     EditText m_userName,m_password;
+<<<<<<< HEAD
+    TextView m_errorMessage;
+    private static final String TAG = "MainActivityDebug";
+    private DBHelper _myDB;
+=======
     Context context = this;
+>>>>>>> 576ea5862d6b04d7aa399cab8d0bed328db5830d
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.d(TAG, "OnCreate MainActivity Start...");
+        _myDB = new DBHelper(this);
+        _myDB.start();  // initialize the DB
         m_register = (Button)findViewById(R.id.registerButton);
         m_login = (Button)findViewById(R.id.loginButton);
 
@@ -70,6 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+        Log.d(TAG, "OnCreate MainActivity Finish.");
     }
 }

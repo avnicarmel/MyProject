@@ -150,14 +150,16 @@ public class DBHelper extends SQLiteOpenHelper {
        db.execSQL(sql_create_table);
 
         Log.d(TAG, "create_tables end.");
-
+       // db.close(); TODO: check if needed
     }
 
+    /**
+     * Initialize the DB
+     */
     public void start() {
 
         insert_to_table();
-       // SQLiteDatabase db = this.getWritableDatabase();
-        //ContentValues song_values = new ContentValues();
+
     }
     private void insert_to_table()
             throws SQLiteConstraintException {
@@ -166,6 +168,14 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values2 = new ContentValues();
         ContentValues values3 = new ContentValues();
         ContentValues values4 = new ContentValues();
+        ContentValues values11 = new ContentValues();
+        ContentValues values22 = new ContentValues();
+        ContentValues values33 = new ContentValues();
+        ContentValues values44 = new ContentValues();
+        ContentValues values111 = new ContentValues();
+        ContentValues values222 = new ContentValues();
+        ContentValues values333 = new ContentValues();
+        ContentValues values444 = new ContentValues();
 
         //for professor
         values1.put(FIRST_NAME, "Litaf");
@@ -186,16 +196,117 @@ public class DBHelper extends SQLiteOpenHelper {
         values4.put(TEACH_LVL,5);
         values4.put(GENERAL_RANK,5);
 
+        //for professor
+        values11.put(FIRST_NAME, "Carmel");
+        values11.put(LAST_NAME, "Avni");
+        //for courses
+        values22.put(COURSE_NAME,"Malam");
+        //for member
+        values33.put(USER_NAME,"Negev");
+        values33.put(PASSWORD,"123");
+        values33.put(INSTITUTE,"Haifa University");
+        //for rank
+        values44.put(PROF_ID,2);
+        values44.put(COURSE_ID,2);
+        values44.put(SEMESTER,"b");
+        values44.put(ATTITUDE,10);
+        values44.put(PREPARE,10);
+        values44.put(INTEREST,10);
+        values44.put(TEACH_LVL,10);
+        values44.put(GENERAL_RANK,10);
+
+        //for professor
+        values111.put(FIRST_NAME, "Eli");
+        values111.put(LAST_NAME, "Bar Yahalom");
+        //for courses
+        values222.put(COURSE_NAME,"Logica");
+        //for member
+        values333.put(USER_NAME,"Viki");
+        values333.put(PASSWORD,"123");
+        values333.put(INSTITUTE,"Tel Hai");
+        //for rank
+        values444.put(PROF_ID,3);
+        values444.put(COURSE_ID,3);
+        values444.put(SEMESTER,"a");
+        values444.put(ATTITUDE,5);
+        values444.put(PREPARE,7);
+        values444.put(INTEREST,7);
+        values444.put(TEACH_LVL,5);
+        values444.put(GENERAL_RANK,6);
+
+
         try {
             db.insertOrThrow(PROFESSOR_TABLE, null, values1);
             db.insertOrThrow(COURSE_TABLE, null, values2);
             db.insertOrThrow(MEMBER_TABLE, null, values3);
             db.insertOrThrow(RANK_TABLE, null, values4);
+
+            db.insertOrThrow(PROFESSOR_TABLE, null, values11);
+            db.insertOrThrow(COURSE_TABLE, null, values22);
+            db.insertOrThrow(MEMBER_TABLE, null, values33);
+            db.insertOrThrow(RANK_TABLE, null, values44);
+
+            db.insertOrThrow(PROFESSOR_TABLE, null, values111);
+            db.insertOrThrow(COURSE_TABLE, null, values222);
+            db.insertOrThrow(MEMBER_TABLE, null, values333);
+            db.insertOrThrow(RANK_TABLE, null, values444);
         } catch (SQLiteConstraintException e) {
 
         }
         finally {
             db.close();
         }
+    }
+
+    /**
+     *  Check if the user is in the DB
+     * @param id - the user id
+     * @param password - the user password
+     * @return Returns the user institute if he exist, else return null
+     */
+    public ArrayList<String> login(String id, String password) {
+        ArrayList<String> res=new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor result = db.rawQuery("SELECT "+INSTITUTE+" FROM " + MEMBER_TABLE+" WHERE "+MEMBER_ID+"="+id+" AND "+PASSWORD+"="+password, null);
+        if(result== null || result.getCount() <= 0) // didn't found user
+        {
+            result.close();
+            return null;
+        }
+        else  if (result.moveToFirst()) {
+            String institute = result.getString(0);
+            res.add(institute);
+        }
+        result.close();
+        return res;
+
+    }
+
+    /**
+     * Insert new member to DB
+     * @param name member name
+     * @param password member password
+     * @param institute member institute
+     * @return true if success, else false
+     */
+    public boolean register(String name, String password, String institute ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        if(name == null || password == null || institute==null)
+            return false;
+        values.put(USER_NAME,name);
+        values.put(PASSWORD,password);
+        values.put(INSTITUTE,institute);
+        try {
+            db.insertOrThrow(MEMBER_TABLE, null, values);
+
+        } catch (SQLiteConstraintException e) {
+            return false;
+        }
+        finally {
+            db.close();
+        }
+        return true;
     }
 }

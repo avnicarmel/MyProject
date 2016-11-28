@@ -1,10 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_first_filter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.user.myapplication.firstFilter">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Choose Filter"
+    android:textStyle="bold"
 
-</android.support.constraint.ConstraintLayout>
+    android:layout_gravity="left"
+    android:textColor="#111"/>
+    <TextView
+        android:text="Lecturer"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.29"
+        android:id="@+id/lecturerText"
+        android:layout_gravity="center_vertical"
+        android:background="#937e7e"
+        android:gravity="left|center"
+        android:textColor="#ffff"
+        android:textAlignment="gravity"
+
+    />
+
+    <ListView
+        android:id="@+id/LecturerList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/lecturerText"
+        android:layout_weight="4"
+        android:focusable="true"></ListView>
+
+
+    <TextView
+        android:text="Courses"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.29"
+        android:id="@+id/courseText"
+        android:background="#937e7e"
+        android:layout_gravity="center_vertical"
+        android:textColor="#ffff"
+        android:gravity="left|center"
+
+        />
+    <ListView
+        android:id="@+id/CourseList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/courseText"
+        android:layout_weight="4"
+        android:focusable="true"
+        android:textAlignment="gravity">
+
+    </ListView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rank'em!"
+        android:id="@+id/RankButton"
+        android:layout_gravity="center"
+        />
+</LinearLayout>
