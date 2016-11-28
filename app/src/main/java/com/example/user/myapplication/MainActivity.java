@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     Button m_register, m_login;
     EditText m_userName,m_password;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         _myDB = new DBHelper(this);
-
+        _myDB.start();
         m_register = (Button)findViewById(R.id.registerButton);
         m_login = (Button)findViewById(R.id.loginButton);
 
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v)
             {
 
-                
+
                 if(m_userName.getText().toString().equals("") && m_password.getText().toString().equals(""))
                 {
                     AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                             });
                 }
                 else{
+
+                    ArrayList<String> res = _myDB.login(m_userName.getText().toString(),m_password.getText().toString() );
                     Intent intent = new Intent(v.getContext(), firstFilter.class);
                     startActivity(intent);
 
