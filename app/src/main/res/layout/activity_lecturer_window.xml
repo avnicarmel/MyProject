@@ -7,4 +7,229 @@
     android:layout_height="match_parent"
     tools:context="com.example.user.myapplication.LecturerWindow">
 
+
+
+    <TableLayout
+        android:id="@+id/TableAttitude"
+        android:layout_width="368dp"
+        android:layout_height="400dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/LecturerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TableAttitude"
+                android:layout_margin="30dp"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#669966"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/AttitudeTextViewHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Attitude"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/AttitudeTextViewRankrow2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/AttitudeTextViewRank"
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:background="@android:color/transparent"
+                android:textSize="15dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#8c6699"
+            android:gravity="center"
+            >
+
+            <TextView
+                android:id="@+id/preparednessTextViewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preparedness "
+                android:textColor="#FFF"
+                android:textSize="20dp"
+
+                android:textStyle="bold"
+                />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/PreparednessTextViewRankrow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/preparednessTextViewRank"
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:background="@android:color/transparent"
+                android:textSize="15dp"
+                 />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#668c99"
+            android:gravity="center"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <TextView
+                android:id="@+id/interestTextViewHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Interest "
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/interestTextViewRankrow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="0dp">
+
+            <EditText
+                android:textAlignment="center"
+                android:id="@+id/interestTextViewRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+        </TableRow>
+
+
+        <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#996666"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/teachingLevelTextViewHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Teaching Level "
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </TableRow>
+
+
+        <TableRow
+            android:id="@+id/teachingLevelTextViewRankrow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center"
+            >
+
+            <EditText
+                android:textAlignment="center"
+
+                android:id="@+id/teachingLevelTextViewRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:background="@android:color/transparent"
+                />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#d2d22d"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/generalRankTextViewHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="General Rank"
+                android:textAlignment="center"
+                android:textColor="#FFF"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </TableRow>
+
+
+        <TableRow
+            android:id="@+id/generalRankTextViewRankrow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:gravity="center"
+            >
+
+            <EditText
+                android:id="@+id/generalRankTextViewRank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textAlignment="center"
+
+                android:background="@android:color/transparent"
+                />
+        </TableRow>
+        />
+
+
+
+    </TableLayout>
 </android.support.constraint.ConstraintLayout>

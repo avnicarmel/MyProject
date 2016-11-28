@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_choose_curse"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.myapplication.ChooseCurse">
+    tools:context="com.example.user.myapplication.ChooseLecturer">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,6 +13,7 @@
         android:text="Choose Lecture For More Details.."
         android:textStyle="bold"
         android:layout_gravity="left"
+        android:layout_Below="@+id/lecturerText"
         android:textColor="#111"/>
     <TextView
         android:text="Lecturer"
@@ -23,7 +24,7 @@
         android:layout_weight="0.29"
         android:id="@+id/lecturerText"
         android:layout_gravity="center_vertical"
-        android:background="#996666"
+        android:background="#937e7e"
         android:gravity="left|center"
         android:textColor="#ffff"
         android:textAlignment="gravity"
@@ -37,4 +38,4 @@
         android:layout_weight="4"
         android:focusable="true"></ListView>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
