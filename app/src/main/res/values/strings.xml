@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">דרגותו</string>
-    <string name="db_name">RevUDB</string>
+    <string name="db_name">Rank'em</string>
+
 
 
 </resources>

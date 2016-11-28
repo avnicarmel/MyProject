@@ -5,6 +5,7 @@
     android:id="@+id/activity_choose_curse"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.user.myapplication.ChooseLecturer">
 
     <TextView
@@ -38,4 +39,12 @@
         android:layout_weight="4"
         android:focusable="true"></ListView>
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rank'em!"
+        android:id="@+id/RankButton"
+        android:layout_gravity="center"
+        />
 </LinearLayout>

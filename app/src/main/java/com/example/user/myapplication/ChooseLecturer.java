@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class ChooseLecturer extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class ChooseLecturer extends AppCompatActivity {
     ArrayAdapter m_lecturerAdapter;
     ListView m_LecturerListView;
 
+    Button m_RankButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,25 @@ public class ChooseLecturer extends AppCompatActivity {
             }
         });
 
+
+        m_RankButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                GetInfo();
+
+            }
+
+            private void GetInfo() {
+
+                //
+
+
+            }
+
+
+        });
 
     }
 }
