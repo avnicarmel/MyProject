@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
                     try {
                        ArrayList<String> res = _myDB.login(m_userName.getText().toString(), m_password.getText().toString());
-                      
+                       // String res ="123";
                         if(res != null){
                             Intent intent = new Intent(v.getContext(), firstFilter.class);
                             startActivity(intent);
