@@ -262,14 +262,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     /**
      *  Check if the user is in the DB
-     * @param id - the user id
+     * @param username - the user id
      * @param password - the user password
      * @return Returns the user institute if he exist, else return null
      */
-    public ArrayList<String> login(String id, String password) {
+    public ArrayList<String> login(String username, String password) {
         ArrayList<String> res=new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("SELECT "+INSTITUTE+" FROM " + MEMBER_TABLE+" WHERE "+MEMBER_ID+"="+id+" AND "+PASSWORD+"="+password, null);
+        Cursor result = db.rawQuery("SELECT "+INSTITUTE+" FROM " + MEMBER_TABLE+" WHERE "+USER_NAME+"="+username+" AND "+PASSWORD+"="+password, null);
         if(result== null || result.getCount() <= 0) // didn't found user
         {
             result.close();
