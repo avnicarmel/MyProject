@@ -56,7 +56,7 @@ public class firstFilter extends AppCompatActivity {
         }
 
         ArrayList<String> resCu = new ArrayList<String>();
-        res = _myDB.getCourseByInstitude(m_institude);
+        resCu = _myDB.getCourseByInstitude(m_institude);
 
         m_courseList = new String[resCu.size()];
         for(int i=0; i < resCu.size() ; i++){
