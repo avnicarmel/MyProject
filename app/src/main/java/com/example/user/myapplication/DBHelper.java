@@ -315,7 +315,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<String> getProfByInstitude(String institude) {
         ArrayList<String> res=new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result;
+        Cursor result=null;
         try {
             result = db.rawQuery("SELECT * FROM " + PROFESSOR_TABLE + " WHERE " + INSTITUTE + "=" + institude, null);
             if(result== null || result.getCount() <= 0) // didn't found user
@@ -337,7 +337,8 @@ public class DBHelper extends SQLiteOpenHelper {
             return null;
         }
         finally {
-            result.close();
+            if(result !=null)
+                result.close();
         }
         return res;
 
