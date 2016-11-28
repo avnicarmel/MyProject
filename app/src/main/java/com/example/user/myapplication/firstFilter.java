@@ -12,22 +12,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class firstFilter extends AppCompatActivity {
 
-    String[] m_lecturerList= new String[]{
-            "A",
-            "B",
-            "C"
-    };
+    String[] m_lecturerList;
 
 
-    String[] m_courseList= new String[]{
-            "1",
-            "2",
-            "3"
-    };
+    String[] m_courseList;
     String m_lecturerSelected = "";
     String m_courseSelected = "";
+
+    DBHelper _myDB;
 
     Button m_rank;
 
@@ -35,13 +31,38 @@ public class firstFilter extends AppCompatActivity {
     ListView m_LecturerListView, m_courseListView;
 
     Context context = this;
+    String m_institude;
+
+    public void firstFilter(String ins){
+        m_institude = ins;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_filter);
 
+        _myDB = new DBHelper(this);
+
         m_LecturerListView = (ListView) findViewById(R.id.LecturerList);
         m_courseListView =  (ListView) findViewById(R.id.CourseList);
+
+        ArrayList<String> res = new ArrayList<String>();
+        res = _myDB.getProfByInstitude(m_institude);
+
+        m_lecturerList = new String[res.size()];
+        for(int i=0; i < res.size() ; i++){
+            m_lecturerList[i] = res.get(i);
+        }
+
+        ArrayList<String> resCu = new ArrayList<String>();
+        res = _myDB.getCourseByInstitude(m_institude);
+
+        m_courseList = new String[resCu.size()];
+        for(int i=0; i < resCu.size() ; i++){
+            m_courseList[i] = res.get(i);
+        }
+
 
         m_lecturerAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, m_lecturerList);
         m_courseAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, m_courseList);
@@ -106,6 +127,7 @@ public class firstFilter extends AppCompatActivity {
         }
 
         if(!m_courseSelected.equals("") && !m_lecturerSelected.equals("")){
+
            // firstquery
         }
         else if(!m_courseSelected.equals("") ){

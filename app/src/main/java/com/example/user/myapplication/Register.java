@@ -14,14 +14,24 @@ import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
 
+    String[] ins = new String[]{
+            "Braude",
+            "Haifa University",
+            "The Open University",
+            "Technion"
+    };
     Button m_submit,m_cancel;
     EditText m_userName, m_password, m_email;
     RadioGroup m_radioG;
+    DBHelper _myDB;
+
     Context context = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        _myDB = new DBHelper(this);
 
         m_submit = (Button)findViewById(R.id.submitButton);
         m_cancel=  (Button)findViewById(R.id.cancelButton);
@@ -59,48 +69,47 @@ public class Register extends AppCompatActivity {
         if(m_userName.getText().toString().equals("")
              || m_password.getText().toString().equals("")
              || m_email.getText().toString().equals("")
-             || selectedId == -1)
-              {
-                    AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);
+             || selectedId == -1) {
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(context);
 
-                    dlgAlert.setMessage("Enter username, password and email");
-                    dlgAlert.setTitle("Error");
-                    dlgAlert.setPositiveButton("OK", null);
-                    dlgAlert.setCancelable(true);
-                    dlgAlert.create().show();
+            dlgAlert.setMessage("Enter username, password and email");
+            dlgAlert.setTitle("Error");
+            dlgAlert.setPositiveButton("OK", null);
+            dlgAlert.setCancelable(true);
+            dlgAlert.create().show();
 
-                    dlgAlert.setPositiveButton("Ok",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            });
-                }
-                //query - email exist
-                else if(m_email.getText().toString().equals("@"))
-                {
-                    AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);
+            dlgAlert.setPositiveButton("Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+        }
 
-                    dlgAlert.setMessage("user with this email already exist in the system");
-                    dlgAlert.setTitle("Error");
-                    dlgAlert.setPositiveButton("OK", null);
-                    dlgAlert.setCancelable(true);
-                    dlgAlert.create().show();
-
-                    dlgAlert.setPositiveButton("Ok",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-
-                                }
-                            });
-                }
-                //login
                 else{
-                    //  SentEmail();
-                    //query - add user
-                    Toast.makeText(context, "WELCOME", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(context, MainActivity.class);
-                    startActivity(intent);
+                    Boolean bool= _myDB.register(m_userName.getText().toString(),m_password.getText().toString(), ins[selectedId]);
+                     if(bool) {
+                             Toast.makeText(context, "WELCOME", Toast.LENGTH_SHORT).show();
+
+                              Intent intent = new Intent(context, MainActivity.class);
+                              startActivity(intent);
+            }
+            else{
+                AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);
+
+                dlgAlert.setMessage("user already exist in the system");
+                dlgAlert.setTitle("Error");
+                dlgAlert.setPositiveButton("OK", null);
+                dlgAlert.setCancelable(true);
+                dlgAlert.create().show();
+
+                dlgAlert.setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+            }
                 }
             }
 

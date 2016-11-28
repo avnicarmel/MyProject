@@ -11,6 +11,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -69,9 +70,34 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
 
-                    ArrayList<String> res = _myDB.login(m_userName.getText().toString(),m_password.getText().toString() );
-                    Intent intent = new Intent(v.getContext(), firstFilter.class);
-                    startActivity(intent);
+                    try {
+                       ArrayList<String> res = _myDB.login(m_userName.getText().toString(), m_password.getText().toString());
+                        if(res != null){
+                            Intent intent = new Intent(v.getContext(), firstFilter.class);
+                            startActivity(intent);
+                        }
+                        else{
+                            AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);
+
+                            dlgAlert.setMessage("wrong password or username");
+                            dlgAlert.setTitle("Error");
+                            dlgAlert.setPositiveButton("OK", null);
+                            dlgAlert.setCancelable(true);
+                            dlgAlert.create().show();
+
+                            dlgAlert.setPositiveButton("Ok",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            return;
+                                        }
+                                    });
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Toast.makeText(context,ex.toString() , Toast.LENGTH_SHORT).show();
+                    }
+
 
                 }
             }
