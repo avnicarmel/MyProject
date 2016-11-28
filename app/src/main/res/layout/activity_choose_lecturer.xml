@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_choose_curse"
@@ -14,7 +14,6 @@
         android:text="Choose Lecture For More Details.."
         android:textStyle="bold"
         android:layout_gravity="left"
-        android:layout_Below="@+id/lecturerText"
         android:textColor="#111"/>
     <TextView
         android:text="Lecturer"
@@ -35,7 +34,6 @@
         android:id="@+id/LecturerList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_below="@+id/lecturerText"
         android:layout_weight="4"
         android:focusable="true"></ListView>
 

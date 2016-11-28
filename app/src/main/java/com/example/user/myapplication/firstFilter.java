@@ -114,7 +114,7 @@ public class firstFilter extends AppCompatActivity {
             //secondquery
         }
         else if(!m_lecturerSelected.equals("") ){
-            Intent intent = new Intent(context, LecturerWindow.class);
+            Intent intent = new Intent(context, ChooseLecturer.class);
             startActivity(intent);
             //thirdquery
         }
