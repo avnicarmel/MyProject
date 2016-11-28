@@ -16,11 +16,13 @@ public class MainActivity extends AppCompatActivity {
     Button m_register, m_login;
     EditText m_userName,m_password;
     Context context = this;
+    DBHelper _myDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        _myDB= new DBHelper(this);
+        _myDB.start();  // initialize the DB
         m_register = (Button)findViewById(R.id.registerButton);
         m_login = (Button)findViewById(R.id.loginButton);
 

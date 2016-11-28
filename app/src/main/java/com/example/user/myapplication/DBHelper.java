@@ -40,7 +40,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String USER_NAME = "firstName";
     public static final String FIRST_NAME = "firstName";
     public static final String LAST_NAME = "lastName";
-   // public static final String RANK_ID = "rid";
     public static final String COURSE_NAME = "courseName";
     public static final String PASSWORD ="password";
     public static final String INSTITUTE ="institute";
@@ -125,7 +124,7 @@ public class DBHelper extends SQLiteOpenHelper {
         // create professor table
         sql_create_table = "create table " + PROFESSOR_TABLE
                 + " ("+PROF_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + FIRST_NAME+" TEXT,"+LAST_NAME+" TEXT);";
+                + FIRST_NAME+" TEXT,"+LAST_NAME+" TEXT, "+INSTITUTE+" TEXT);";
         db.execSQL(sql_create_table);
 
         //create courses table
@@ -180,6 +179,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //for professor
         values1.put(FIRST_NAME, "Litaf");
         values1.put(LAST_NAME, "Kupfer");
+        values1.put(INSTITUTE, "Braude");
         //for courses
         values2.put(COURSE_NAME,"Matam");
         //for member
@@ -199,6 +199,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //for professor
         values11.put(FIRST_NAME, "Carmel");
         values11.put(LAST_NAME, "Avni");
+        values11.put(INSTITUTE, "Braude");
         //for courses
         values22.put(COURSE_NAME,"Malam");
         //for member
@@ -218,6 +219,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //for professor
         values111.put(FIRST_NAME, "Eli");
         values111.put(LAST_NAME, "Bar Yahalom");
+        values111.put(INSTITUTE, "Braude");
         //for courses
         values222.put(COURSE_NAME,"Logica");
         //for member
@@ -309,4 +311,25 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return true;
     }
+    public ArrayList<String> getProfByInstitude(String institude) {
+        ArrayList<String> res=new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor result = db.rawQuery("SELECT * FROM " + PROFESSOR_TABLE+" WHERE "+INSTITUTE+"="+institude, null);
+        if(result== null || result.getCount() <= 0) // didn't found user
+        {
+            result.close();
+            return null;
+        }
+        else  if (result.moveToFirst()) {
+            do {
+                String name = result.getString(1);
+                res.add(name);
+            } while(result.moveToNext());
+
+        }
+        result.close();
+        return res;
+
+    }
+
 }
