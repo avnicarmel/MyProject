@@ -124,7 +124,7 @@ public class DBHelper extends SQLiteOpenHelper {
         // create professor table
         sql_create_table = "create table " + PROFESSOR_TABLE
                 + " ("+PROF_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + FIRST_NAME+" TEXT,"+LAST_NAME+" TEXT, "+INSTITUTE+" TEXT);";
+                + FIRST_NAME+" TEXT,"+LAST_NAME+" TEXT);";
         db.execSQL(sql_create_table);
 
         //create courses table
@@ -179,7 +179,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //for professor
         values1.put(FIRST_NAME, "Litaf");
         values1.put(LAST_NAME, "Kupfer");
-        values1.put(INSTITUTE, "Braude");
+        //values1.put(INSTITUTE, "Braude");
         //for courses
         values2.put(COURSE_NAME,"Matam");
         //for member
@@ -199,7 +199,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //for professor
         values11.put(FIRST_NAME, "Carmel");
         values11.put(LAST_NAME, "Avni");
-        values11.put(INSTITUTE, "Braude");
+        //values11.put(INSTITUTE, "Braude");
         //for courses
         values22.put(COURSE_NAME,"Malam");
         //for member
@@ -219,7 +219,7 @@ public class DBHelper extends SQLiteOpenHelper {
         //for professor
         values111.put(FIRST_NAME, "Eli");
         values111.put(LAST_NAME, "Bar Yahalom");
-        values111.put(INSTITUTE, "Braude");
+        //values111.put(INSTITUTE, "Braude");
         //for courses
         values222.put(COURSE_NAME,"Logica");
         //for member
@@ -317,7 +317,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor result=null;
         try {
-            result = db.rawQuery("SELECT * FROM " + PROFESSOR_TABLE + " WHERE " + INSTITUTE + "=" + institude, null);
+            result = db.rawQuery("SELECT * FROM " + PROFESSOR_TABLE, null);
             if(result== null || result.getCount() <= 0) // didn't found user
             {
                 result.close();
