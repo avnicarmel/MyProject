@@ -352,4 +352,72 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    public ArrayList<String> getCourseByInstitude(String institude) {
+        ArrayList<String> res=new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor result=null;
+        try {
+            result = db.rawQuery("SELECT * FROM " + COURSE_TABLE, null);
+            if(result== null || result.getCount() <= 0) // didn't found user
+            {
+                result.close();
+                return null;
+            }
+            else  if (result.moveToFirst()) {
+                do {
+                    String num = result.getString(0);
+                    String cName = result.getString(1);
+                    String name = num+" "+cName;
+                    res.add(name);
+                } while(result.moveToNext());
+
+            }
+            result.close();
+        }
+        catch(SQLiteConstraintException e)
+        {
+            return null;
+        }
+        finally {
+            if(result !=null)
+                result.close();
+        }
+        return res;
+
+    }
+/*
+    public ArrayList<String> getProfRanks(String firstName, String lastName){
+        ArrayList<String> res=new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor result=null;
+        try {
+            result = db.rawQuery("SELECT * FROM " + PROFESSOR_TABLE+" WHERE "+FIRST_NAME+" = "+firstName+" AND "+LAST_NAME+" = "+lastName, null);
+            if(result== null || result.getCount() <= 0) // didn't found user
+            {
+                result.close();
+                return null;
+            }
+            else  if (result.moveToFirst()) {
+                do {
+                    String firstName = result.g
+                    String lastName = result.getString(2);
+                    String name = firstName+" "+lastName;
+                    res.add(name);
+                } while(result.moveToNext());
+
+            }
+            result.close();
+        }
+        catch(SQLiteConstraintException e)
+        {
+            return null;
+        }
+        finally {
+            if(result !=null)
+                result.close();
+        }
+
+        return null;
+    }*/
+
 }
