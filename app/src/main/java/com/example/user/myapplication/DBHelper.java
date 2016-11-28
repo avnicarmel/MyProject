@@ -269,19 +269,25 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<String> login(String username, String password) {
         ArrayList<String> res=new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor result = db.rawQuery("SELECT "+INSTITUTE+" FROM " + MEMBER_TABLE+" WHERE "+USER_NAME+"="+username
-                +" AND "+PASSWORD+"="+password, null);
-        if(result== null || result.getCount() <= 0) // didn't found user
-        {
+        try {
+            Cursor result = db.rawQuery("SELECT " + INSTITUTE + " FROM " + MEMBER_TABLE + " WHERE " + USER_NAME + "=" + username
+                    + " AND " + PASSWORD + "=" + password, null);
+            if (result == null || result.getCount() <= 0) // didn't found user
+            {
+                result.close();
+                return null;
+            } else if (result.moveToFirst()) {
+                String institute = result.getString(0);
+                res.add(institute);
+            }
             result.close();
+            return res;
+        }
+        catch (SQLiteException e)
+        {
             return null;
         }
-        else  if (result.moveToFirst()) {
-            String institute = result.getString(0);
-            res.add(institute);
-        }
-        result.close();
-        return res;
+
 
     }
 
