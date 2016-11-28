@@ -82,6 +82,7 @@ public class firstFilter extends AppCompatActivity {
 
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 m_lecturerSelected = m_lecturerList[position];
+
             }
             });
 
@@ -130,12 +131,14 @@ public class firstFilter extends AppCompatActivity {
 
            // firstquery
         }
-        else if(!m_courseSelected.equals("") ){
-            Intent intent = new Intent(context, LecturerWindow.class);
+        else if(!m_lecturerSelected.equals("") ){
+
+            Intent intent = new Intent(this, LecturerWindow.class);
             startActivity(intent);
+
             //secondquery
         }
-        else if(!m_lecturerSelected.equals("") ){
+        else if(!m_courseListView.equals("") ){
             Intent intent = new Intent(context, ChooseLecturer.class);
             startActivity(intent);
             //thirdquery
