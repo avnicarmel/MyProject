@@ -27,13 +27,12 @@
         android:ems="15"
         android:id="@+id/username"
         android:layout_gravity="left"
-
+        android:maxLines="1"
         android:focusable = "true"
         android:layout_below="@+id/RegisterText"
         android:layout_alignParentLeft = "true"
         android:layout_alignParentRight = "true"
         android:layout_alignParentEnd = "true"
-        android:maxLines="1"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -56,23 +55,22 @@
         android:layout_marginTop="4dp" />
 
     <EditText
+        android:id="@+id/emailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:textColorHint="#a5b19c"
-        android:textColor="#a5b19c"
-        android:ems="15"
-        android:layout_gravity="left"
-        android:id="@+id/emailText"
-        android:focusable = "true"
-        android:layout_alignParentLeft = "true"
-        android:layout_alignParentRight = "true"
-        android:layout_alignParentEnd = "true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/passwordText"
-        android:maxLines="1"
+        android:layout_gravity="left"
+        android:layout_marginBottom="4dp"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"/>
-
+        android:ems="15"
+        android:focusable="true"
+        android:hint="Email"
+        android:maxLines="1"
+        android:textColor="#a5b19c"
+        android:textColorHint="#a5b19c" />
 
 
     <LinearLayout
