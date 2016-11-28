@@ -24,7 +24,7 @@
         android:layout_weight="0.29"
         android:id="@+id/lecturerText"
         android:layout_gravity="center_vertical"
-        android:background="#937e7e"
+        android:background="#666699"
         android:gravity="left|center"
         android:textColor="#ffff"
         android:textAlignment="gravity"
@@ -41,19 +41,20 @@
 
 
     <TextView
-        android:text="Courses"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:textSize="20dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.29"
         android:id="@+id/courseText"
-        android:background="#937e7e"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:textColor="#ffff"
+        android:layout_weight="0.29"
+        android:background="#666699"
         android:gravity="left|center"
+        android:text="Courses"
+        android:textColor="#ffff"
+        android:textSize="20dp"
+        android:textStyle="bold"
 
         />
+
     <ListView
         android:id="@+id/CourseList"
         android:layout_width="match_parent"
@@ -64,11 +65,22 @@
         android:textAlignment="gravity">
 
     </ListView>
+
+
     <Button
+        android:id="@+id/RankButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rank'em!"
-        android:id="@+id/RankButton"
         android:layout_gravity="center"
-        />
+        android:background="#996666"
+        android:text="Rank'em!" />
+
+    <Button
+        android:id="@+id/ClearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:text="Clear" />
+
 </LinearLayout>

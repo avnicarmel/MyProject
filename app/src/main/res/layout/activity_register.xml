@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.example.user.myapplication.Register"
-    tools:ignore="ExtraText">
+    tools:context="com.example.user.myapplication.Register">
 
     <TextView
     android:layout_width="wrap_content"

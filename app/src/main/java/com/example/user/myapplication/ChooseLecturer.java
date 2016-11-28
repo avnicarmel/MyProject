@@ -10,11 +10,12 @@ import android.widget.ListView;
 
 public class ChooseLecturer extends AppCompatActivity {
 
-    String[] m_lecturerList= new String[]{
+    String[] m_lecturerList1= new String[]{
             "A",
             "B",
             "C"
     };
+
     String m_lecturerSelected;
     ArrayAdapter m_lecturerAdapter;
     ListView m_LecturerListView;
@@ -25,9 +26,11 @@ public class ChooseLecturer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_lecturer);
 
+
+        m_RankButton = (Button) findViewById(R.id.RankButton2);
         m_LecturerListView = (ListView) findViewById(R.id.LecturerList);
 
-        m_lecturerAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, m_lecturerList);
+        m_lecturerAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, m_lecturerList1);
 
         m_LecturerListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
@@ -39,7 +42,7 @@ public class ChooseLecturer extends AppCompatActivity {
         m_LecturerListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                m_lecturerSelected = m_lecturerList[position];
+                m_lecturerSelected = m_lecturerList1[position];
             }
         });
 

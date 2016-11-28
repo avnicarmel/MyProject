@@ -25,7 +25,7 @@ public class firstFilter extends AppCompatActivity {
 
     DBHelper _myDB;
 
-    Button m_rank;
+    Button m_rank, m_clearButton;
 
     ArrayAdapter m_lecturerAdapter, m_courseAdapter;
     ListView m_LecturerListView, m_courseListView;
@@ -94,18 +94,21 @@ public class firstFilter extends AppCompatActivity {
         });
 
         m_rank = (Button)findViewById(R.id.RankButton);
-
+        m_clearButton = (Button)findViewById(R.id.ClearButton);
 
         m_rank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 GetInfo();
-
             }
+        });
 
-
+        m_clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 m_lecturerSelected = "";
+                 m_courseSelected = "";
+            }
         });
     }
     private void GetInfo() {
