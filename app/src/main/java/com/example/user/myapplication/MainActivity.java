@@ -16,10 +16,12 @@ public class MainActivity extends AppCompatActivity {
     Button m_register, m_login;
     EditText m_userName,m_password;
     Context context = this;
+    DBHelper _myDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        _myDB = new DBHelper(this);
 
         m_register = (Button)findViewById(R.id.registerButton);
         m_login = (Button)findViewById(R.id.loginButton);
@@ -27,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         m_userName= (EditText)findViewById(R.id.nameEditText);
         m_password = (EditText)findViewById(R.id.passwordEditText);
 
-        m_userName.setText("litaf");
-        m_password.setText("2");
 
         m_userName.setSingleLine(true);
         m_password.setSingleLine(true);
@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
                             @Override
             public void onClick(View v)
             {
+
+                
                 if(m_userName.getText().toString().equals("") && m_password.getText().toString().equals(""))
                 {
                     AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);
