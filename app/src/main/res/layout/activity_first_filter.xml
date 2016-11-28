@@ -35,9 +35,9 @@
         android:id="@+id/LecturerList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:focusable="true"
         android:layout_below="@+id/lecturerText"
-        android:layout_weight="4"
-        android:focusable="true"></ListView>
+        android:layout_weight="4"></ListView>
 
 
     <TextView
