@@ -60,7 +60,7 @@ public class firstFilter extends AppCompatActivity {
 
         m_courseList = new String[resCu.size()];
         for(int i=0; i < resCu.size() ; i++){
-            m_courseList[i] = res.get(i);
+            m_courseList[i] = resCu.get(i);
         }
 
 
@@ -139,7 +139,7 @@ public class firstFilter extends AppCompatActivity {
             //secondquery
         }
         else if(!m_courseListView.equals("") ){
-            Intent intent = new Intent(context, ChooseLecturer.class);
+            Intent intent = new Intent(this, ChooseLecturer.class);
             startActivity(intent);
             //thirdquery
         }
